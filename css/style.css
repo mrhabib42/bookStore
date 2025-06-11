@@ -1,0 +1,286 @@
+:root {
+    --navy: #003366;
+    --teal: #008080;
+    --orange: #FFA500;
+    --yellow: #FFD700;
+    --light-grey: #f5f5f5;
+    --dark-grey: #333333;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: var(--dark-grey);
+}
+
+/* Login Page Styles */
+.login-page {
+    background-color: var(--light-grey);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.login-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.logo h2 {
+    font-weight: 700;
+    color: var(--teal);
+}
+
+/* Color Classes */
+.bg-navy {
+    background-color: var(--navy) !important;
+}
+
+.bg-teal {
+    background-color: var(--teal) !important;
+}
+
+.bg-orange {
+    background-color: var(--orange) !important;
+}
+
+.bg-light-grey {
+    background-color: var(--light-grey) !important;
+}
+
+.text-teal {
+    color: var(--teal) !important;
+}
+
+.text-navy {
+    color: var(--navy) !important;
+}
+
+.btn-teal {
+    background-color: var(--teal);
+    color: white;
+    border: none;
+    
+}
+
+.btn-teal:hover {
+    background-color: #006666;
+    color: white;
+}
+
+.btn-navy {
+    background-color: var(--navy);
+    color: white;
+    border: none;
+}
+
+.btn-navy:hover {
+    background-color: #002244;
+    color: white;
+}
+
+.btn-outline-teal {
+    color: var(--teal);
+    border-color: var(--teal);
+}
+
+.btn-outline-teal:hover {
+    background-color: var(--teal);
+    color: white;
+}
+
+.btn-outline-navy {
+    color: var(--navy);
+    border-color: var(--navy);
+}
+
+.btn-outline-navy:hover {
+    background-color: var(--navy);
+    color: white;
+}
+
+/* Sidebar and Content Transition */
+/* Sidebar Styles */
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 10px 20px;
+    font-size: 1em;
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#sidebar ul li.active > a {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+
+
+/* Content Styles */
+#content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* Navbar Styles */
+.navbar {
+    padding: 15px 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: white;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.stat-card {
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Table Styles */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+    color: var(--dark-grey);
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Modal Styles */
+.modal-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* Additional styles for all pages */
+
+/* Toast notifications */
+#toastContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+}
+
+.toast {
+    margin-bottom: 10px;
+}
+
+/* Tabs */
+.nav-tabs .nav-link {
+    color: var(--navy);
+    border: none;
+    padding: 10px 20px;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--teal);
+    border-bottom: 2px solid var(--teal);
+    background-color: transparent;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 5px 8px;
+}
+
+.bg-orange {
+    background-color: var(--orange) !important;
+}
+
+.bg-yellow {
+    background-color: var(--yellow) !important;
+}
+
+/* Buttons */
+.btn-orange {
+    background-color: var(--orange);
+    color: white;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #e69500;
+    color: white;
+}
+
+/* Forms */
+.form-control, .form-select {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 0.25rem rgba(0, 128, 128, 0.25);
+}
+
+/* Tables */
+.table th {
+    font-weight: 500;
+    color: var(--navy);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-tabs .nav-link {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bookstore - Book Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar (same as dashboard) -->
+ <nav id="sidebar" class="bg-navy">
+            <div class="sidebar-header text-center py-4">
+                <h4 class="text-white">Modern Bookstore</h4>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="books.html"><i class="bi bi-book me-2"></i> Book Management</a>
+                </li>
+                <li>
+                    <a href="customers.html"><i class="bi bi-people me-2"></i> Customer Management</a>
+                </li>
+                <li>
+                    <a href="employees.html"><i class="bi bi-person-badge me-2"></i> Employee Management</a>
+                </li>
+                <li>
+                    <a href="orders.html"><i class="bi bi-cart me-2"></i> Order Management</a>
+                </li>
+                <li>
+                    <a href="authors-genres.html"><i class="bi bi-pencil me-2"></i> Authors & Genres</a>
+                </li>
+                <li>
+                    <a href="login-management.html"><i class="bi bi-shield-lock me-2"></i> Login Management</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer p-3">
+                <a href="#" id="logout" class="btn btn-sm btn-teal w-100"><i class="bi bi-box-arrow-left me-2"></i> Logout</a>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Top Navigation (same as dashboard) -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-teal">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="ms-auto">
+                        <span class="navbar-text me-3">
+                            Welcome, <strong>Admin</strong>
+                        </span>
+                        <div class="dropdown d-inline">
+                            <button class="btn btn-teal dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Book Management Content -->
+            <div class="container-fluid py-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Book Management</h2>
+                    <button class="btn btn-teal" data-bs-toggle="modal" data-bs-target="#addBookModal">
+                        <i class="bi bi-plus-circle me-2"></i>Add New Book
+                    </button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search books..." id="bookSearch">
+                                    <button class="btn btn-teal" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="genreFilter">
+                                    <option value="">Filter by Genre</option>
+                                    <option value="fiction">Fiction</option>
+                                    <option value="non-fiction">Non-Fiction</option>
+                                    <option value="mystery">Mystery</option>
+                                    <option value="romance">Romance</option>
+                                    <option value="sci-fi">Science Fiction</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="authorFilter">
+                                    <option value="">Filter by Author</option>
+                                    <option value="1">J.K. Rowling</option>
+                                    <option value="2">Stephen King</option>
+                                    <option value="3">Agatha Christie</option>
+                                    <option value="4">George Orwell</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Books Table -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="booksTable">
+                                <thead>
+                                    <tr>
+                                        <th>Cover</th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Genre</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQjQP6N_JygvrTNu6ztCsTo4qR5AfA1d_L-xfTU407q4hxHrntj" alt="Book Cover" class="img-thumbnail" style="width: 50px; height: 70px;">
+                                        </td>
+                                        <td>The Silent Patient</td>
+                                        <td>Alex Michaelides</td>
+                                        <td>Mystery</td>
+                                        <td>$12.99</td>
+                                        <td>24</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-teal" data-bs-toggle="modal" data-bs-target="#viewBookModal">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-navy" data-bs-toggle="modal" data-bs-target="#editBookModal">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="data:image/webp;base64,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" alt="Book Cover" class="img-thumbnail" style="width: 50px; height: 70px;">
+                                        </td>
+                                        <td>Where the Crawdads Sing</td>
+                                        <td>Delia Owens</td>
+                                        <td>Fiction</td>
+                                        <td>$14.50</td>
+                                        <td>18</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-teal" data-bs-toggle="modal" data-bs-target="#viewBookModal">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-navy" data-bs-toggle="modal" data-bs-target="#editBookModal">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#editBookModal">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="data:image/jpeg;base64,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" alt="Book Cover" class="img-thumbnail" style="width: 50px; height: 70px;">
+                                        </td>
+                                        <td>Atomic Habits</td>
+                                        <td>James Clear</td>
+                                        <td>Non-Fiction</td>
+                                        <td>$11.99</td>
+                                        <td>32</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-teal" data-bs-toggle="modal" data-bs-target="#viewBookModal">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-navy" data-bs-toggle="modal" data-bs-target="#editBookModal">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA4CAMAAACiyqpKAAABRFBMVEUgLFQbKFIdKlMXJVAZJ1T///8AAFQgJ0QWJVQAAEEAGVQRIlQAFlQ6QmMPIFQzO1QRIU4+RmVGTWoAD1QqNFoAGEkAEUbV1txfZHxtcYZOVXFWXHYoMVRnaVW2sVcIHVSTklarp1d5eVUsNVTY0Fg6QVQ/RVTPyFhDSVQvOVxaXVXk5usAAEWdoK27vcUXIEDIydCRlKN7f5K/uleIiFZSVFWin1f78lno31l3dlpJSm44O2SSkqkxNGRzcn9eX1+Ni2QeRXAaa50gi7ojS3AApOQts9g2nLYvbYUAhL4LndUpXYQ+qrg3i5lDnZxioMkeqdbB3dlPtJdsqcFfp5VfpX02amRKrZ1cto2q1LKVw43B26zr8ua72Jvy8MH8+dX76iro4pr169T89rHn3XXo3Nnv0Y3047H653X+tUAHEziTYjZfmaawAAAD8ElEQVRIia1Va2PiRBSdmUxoQgiEhJBXAyQQ8hIKebDUfVfd9VGrVVddxaLUbRX//3dvAt1ta+GTN5PMZHJy5p6ZO3MR+h+NMAyGgjFhihseDMNAXRi0cYlpJoZuGLquNxPdlA3D1PXEEMtOQ7YMq0CRltw0RdM0xZYsW7LVFC1LDokFHZYJTZGUVIUVo0ELw0WKJio6cPEg973rVgWBUCpU67sVkE6aZYd25Ka9PSiaVjp5z3UidH+QW6BDAM3S45kT0f0g5Lqzzqy7E4SIQErH/6sJIeCmmKPVLiEUCaiOuGoXagHUvhdAI6EaDd08dXAjr/WUXs1OHQXqw/SDTOVRMOvkjpvlfv8R8SuD7qCKFF/xEefXbpiqqd8rQZVBv5MOKn7u1PzK3JlT4RbIr6A0d47TNAs6yqACsN68eN5mIh4mjcfmx3mjixogzcNVe8h51CPE+6CSIEofP3nytMshoU4RwSCvjjnC3ZkJmudPnz17PrOr7myIgaQ/y2qucty4DRKyrPriRc8eKH5joAznlSDNep1oUEN3QK6SQTc4nTqVTs/25n4EM3NnBeuZE7nZLPMbIL8/d3zP6eSKf4cIYS9zvSDIom5UswNPsftRPxLse6GABQ5CVaCwjBRjRAlcaGe4gHzE7I640piXJ5j55FPpwd/JZtrwyWcn0stXrz9nULFPNrbFtCxTDEuiL06+/Or16ddnArF0WTRlUZblEtXCOCwwLYT4b8bfvjo9O/+ujlphK4Qibv4msHvhN8vCRNJY9vvTsx/YNz9yuNy/pkw3w5HDPA+8IYeIGsex9tPPb1n2l5oX5EHQyPOov/G27wWNYAgvaqyds2/fsL+yMd/Ph0FwOPSCEkSGbhTZth01gInVzhe/LVgAbY6F9+qK2aXFJiIl0wIwANo5lcC0uFix7HKx+GgPKF6yC3b5+3IviF1dr9jlcvnHPtC7Ffi0vLz4U3ngc0gkSSIq++7qOr68vLp8aDjSMpLRSDpK2NXV6q/rv2ODeYCJtMfaaH2wXo/Y+GLxT/uhWClWEB0dgK0b4wkcJzucJgdbW7d3B+YN5mDHd1yWI7Rer49UtQxKqejCDJLUrQJsqZKFJUsdj8c6FEnXmanEWJJl8KPJVmc7ToyY12O+rfHqNJGkaYInfKLxyXQ64lsbD9XJaDxpT6YJP2lLBSjR4F0bmcZ0jI2xumHSeF4ztanW1goQA3d7YkxgpBH0TtTtFBEiilht4iYhIWyHMCRiU1KbrVAKjZvcAFWREyE1ElI2oEXhNKccJbd2M7aalmXplixDGoSkqMuBbR/b0d0jo8xtkFSBrlWmVWDhOLr7yNi5KPvtX5XGfIn3EcNIAAAAAElFTkSuQmCC" alt="Book Cover" class="img-thumbnail" style="width: 50px; height: 70px;">
+                                        </td>
+                                        <td>The Midnight Library</td>
+                                        <td>Matt Haig</td>
+                                        <td>Fiction</td>
+                                        <td>$13.25</td>
+                                        <td>15</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-teal" data-bs-toggle="modal" data-bs-target="#viewBookModal">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-navy" data-bs-toggle="modal" data-bs-target="#editBookModal">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Book Modal -->
+    <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-teal text-white">
+                    <h5 class="modal-title" id="addBookModalLabel">Add New Book</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addBookForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="bookTitle" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="bookTitle" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="bookAuthor" class="form-label">Author</label>
+                                <select class="form-select" id="bookAuthor" required>
+                                    <option value="">Select Author</option>
+                                    <option value="1">Alex Michaelides</option>
+                                    <option value="2">Delia Owens</option>
+                                    <option value="3">James Clear</option>
+                                    <option value="4">Matt Haig</option>
+                                    <option value="5">Tara Westover</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="bookGenre" class="form-label">Genre</label>
+                                <select class="form-select" id="bookGenre" required>
+                                    <option value="">Select Genre</option>
+                                    <option value="fiction">Fiction</option>
+                                    <option value="non-fiction">Non-Fiction</option>
+                                    <option value="mystery">Mystery</option>
+                                    <option value="romance">Romance</option>
+                                    <option value="sci-fi">Science Fiction</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="bookIsbn" class="form-label">ISBN</label>
+                                <input type="text" class="form-control" id="bookIsbn" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="bookPrice" class="form-label">Price ($)</label>
+                                <input type="number" step="0.01" class="form-control" id="bookPrice" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="bookStock" class="form-label">Stock Quantity</label>
+                                <input type="number" class="form-control" id="bookStock" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="bookPages" class="form-label">Page Count</label>
+                                <input type="number" class="form-control" id="bookPages">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="bookDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookCover" class="form-label">Cover Image</label>
+                            <input class="form-control" type="file" id="bookCover">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-teal" id="saveBookBtn">Save Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Book Modal -->
+    <div class="modal fade" id="editBookModal" tabindex="-1" aria-labelledby="editBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-navy text-white">
+                    <h5 class="modal-title" id="editBookModalLabel">Edit Book</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editBookForm">
+                        <!-- Same fields as add book form, but pre-populated -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-navy">Update Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Book Modal -->
+    <div class="modal fade" id="viewBookModal" tabindex="-1" aria-labelledby="viewBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-teal text-white">
+                    <h5 class="modal-title" id="viewBookModalLabel">Book Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQjQP6N_JygvrTNu6ztCsTo4qR5AfA1d_L-xfTU407q4hxHrntj" alt="Book Cover" class="img-fluid mb-3">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-teal">Edit Details</button>
+                                <button class="btn btn-outline-danger">Delete Book</button>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h3>The Silent Patient</h3>
+                            <p class="text-muted">by Alex Michaelides</p>
+                            <div class="mb-3">
+                                <span class="badge bg-teal">Mystery</span>
+                                <span class="badge bg-light text-dark ms-2">ISBN: 978-1250301697</span>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">Price</h6>
+                                            <p class="card-text fw-bold">$12.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">In Stock</h6>
+                                            <p class="card-text fw-bold">24</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">Pages</h6>
+                                            <p class="card-text fw-bold">336</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>Description</h5>
+                            <p>Alicia Berenson's life is seemingly perfect. A famous painter married to an in-demand fashion photographer, she lives in a grand house with big windows overlooking a park in one of London's most desirable areas. One evening her husband Gabriel returns home late from a fashion shoot, and Alicia shoots him five times in the face, and then never speaks another word.</p>
+                            <p>Alicia's refusal to talk, or give any kind of explanation, turns a domestic tragedy into something far grander, a mystery that captures the public imagination and casts Alicia into notoriety. The price of her art skyrockets, and she, the silent patient, is hidden away from the tabloids and spotlight at the Grove, a secure forensic unit in North London.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-teal" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

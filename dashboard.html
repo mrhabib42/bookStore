@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bookstore - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="bg-navy">
+            <div class="sidebar-header text-center py-4">
+                <h4 class="text-white">Modern Bookstore</h4>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="books.html"><i class="bi bi-book me-2"></i> Book Management</a>
+                </li>
+                <li>
+                    <a href="customers.html"><i class="bi bi-people me-2"></i> Customer Management</a>
+                </li>
+                <li>
+                    <a href="employees.html"><i class="bi bi-person-badge me-2"></i> Employee Management</a>
+                </li>
+                <li>
+                    <a href="orders.html"><i class="bi bi-cart me-2"></i> Order Management</a>
+                </li>
+                <li>
+                    <a href="authors-genres.html"><i class="bi bi-pencil me-2"></i> Authors & Genres</a>
+                </li>
+                <li>
+                    <a href="login-management.html"><i class="bi bi-shield-lock me-2"></i> Login Management</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer p-3">
+                <a href="#" id="logout" class="btn btn-sm btn-teal w-100"><i class="bi bi-box-arrow-left me-2"></i> Logout</a>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Top Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-teal">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="ms-auto">
+                        <span class="navbar-text me-3">
+                            Welcome, <strong>Admin</strong>
+                        </span>
+                        <div class="dropdown d-inline">
+                            <button class="btn btn-teal dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Dashboard Content -->
+            <div class="container-fluid py-4">
+                <h2 class="mb-4">Dashboard Overview</h2>
+                
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="card stat-card bg-teal text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Total Books</h6>
+                                        <h2 class="mb-0">1,245</h2>
+                                    </div>
+                                    <i class="bi bi-book fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card stat-card bg-navy text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Total Customers</h6>
+                                        <h2 class="mb-0">568</h2>
+                                    </div>
+                                    <i class="bi bi-people fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card stat-card bg-orange text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Today's Orders</h6>
+                                        <h2 class="mb-0">42</h2>
+                                    </div>
+                                    <i class="bi bi-cart fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card stat-card bg-light-grey">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Revenue</h6>
+                                        <h2 class="mb-0">$8,745</h2>
+                                    </div>
+                                    <i class="bi bi-currency-dollar fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Quick Actions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2 col-6 mb-3">
+                                        <a href="books.html" class="btn btn-outline-teal w-100">
+                                            <i class="bi bi-book fs-4 d-block mb-2"></i>
+                                            Books
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 col-6 mb-3">
+                                        <a href="customers.html" class="btn btn-outline-teal w-100">
+                                            <i class="bi bi-people fs-4 d-block mb-2"></i>
+                                            Customers
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 col-6 mb-3">
+                                        <a href="employees.html" class="btn btn-outline-teal w-100">
+                                            <i class="bi bi-person-badge fs-4 d-block mb-2"></i>
+                                            Employees
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 col-6 mb-3">
+                                        <a href="orders.html" class="btn btn-outline-teal w-100">
+                                            <i class="bi bi-cart fs-4 d-block mb-2"></i>
+                                            Orders
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 col-6 mb-3">
+                                        <a href="authors-genres.html" class="btn btn-outline-teal w-100">
+                                            <i class="bi bi-pencil fs-4 d-block mb-2"></i>
+                                            Authors/Genres
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 col-6 mb-3">
+                                        <a href="login-management.html" class="btn btn-outline-teal w-100">
+                                            <i class="bi bi-shield-lock fs-4 d-block mb-2"></i>
+                                            Logins
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="row">
+                    <div class="col-md-8 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Recent Orders</h5>
+                                <a href="orders.html" class="btn btn-sm btn-teal">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Customer</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#ORD-1001</td>
+                                                <td>John Doe</td>
+                                                <td>2023-07-15</td>
+                                                <td>$124.99</td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-1002</td>
+                                                <td>Jane Smith</td>
+                                                <td>2023-07-15</td>
+                                                <td>$89.50</td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-1003</td>
+                                                <td>Robert Johnson</td>
+                                                <td>2023-07-14</td>
+                                                <td>$156.75</td>
+                                                <td><span class="badge bg-warning text-dark">Processing</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-1004</td>
+                                                <td>Emily Davis</td>
+                                                <td>2023-07-14</td>
+                                                <td>$45.25</td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-1005</td>
+                                                <td>Michael Brown</td>
+                                                <td>2023-07-13</td>
+                                                <td>$210.00</td>
+                                                <td><span class="badge bg-danger">Cancelled</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Books Added -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Recently Added Books</h5>
+                                <a href="books.html" class="btn btn-sm btn-teal">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">The Silent Patient</h6>
+                                            <small>2 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Alex Michaelides</p>
+                                        <small>$12.99</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Where the Crawdads Sing</h6>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Delia Owens</p>
+                                        <small>$14.50</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Educated</h6>
+                                            <small>5 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Tara Westover</p>
+                                        <small>$13.25</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Atomic Habits</h6>
+                                            <small>1 week ago</small>
+                                        </div>
+                                        <p class="mb-1">James Clear</p>
+                                        <small>$11.99</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
